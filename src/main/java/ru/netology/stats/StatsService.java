@@ -1,6 +1,7 @@
 package ru.netology.stats;
 
 public class StatsService {
+
     public long calculateSum(long[] purchases) {
         long sum = 0;
         for (long purchase : purchases) {
@@ -10,14 +11,9 @@ public class StatsService {
     }
 
     public long calculateAverage(long[] purchases) {
-        long average = 0;
-        long sum = 0;
-        for (long purchase : purchases) {
-            sum += purchase;
-            average = sum/12;
-        }
-        return average;
+        return calculateSum(purchases)/12;
     }
+
     public long calculateMaxSaleMonth(long[] purchases) {
         long maxSale = purchases[0];
         for (long purchase : purchases) {
@@ -37,6 +33,7 @@ public class StatsService {
 
         return maxSaleMonth;
     }
+
     public long calculateMinSaleMonth(long[] purchases) {
         long minSale = purchases[0];
         for (long purchase : purchases) {
@@ -58,15 +55,10 @@ public class StatsService {
     }
 
     public long calculateLessAveMonth(long[] purchases) {
-        long average = 0;
-        long sum = 0;
-        for (long purchase : purchases) {
-            sum += purchase;
-            average = sum/12;
-        }
+        long average = calculateAverage(purchases);
         long lessAveMonth = 0;
         for (long purchase : purchases){
-            if (purchase > average) {
+            if (purchase >  average) {
                 lessAveMonth += 1;
             }
         }
@@ -74,12 +66,7 @@ public class StatsService {
     }
 
     public long calculateMoreAveMonth(long[] purchases) {
-        long average = 0;
-        long sum = 0;
-        for (long purchase : purchases) {
-            sum += purchase;
-            average = sum/12;
-        }
+        long average = calculateAverage(purchases);
         long moreAveMonth = 0;
         for (long purchase : purchases){
             if (purchase > average) {
@@ -88,7 +75,5 @@ public class StatsService {
         }
         return moreAveMonth;
     }
-
-
 
 }
